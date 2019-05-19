@@ -10,7 +10,7 @@ exports.handler = function (event, context, callback) {
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify({ "message": 'Uploaded repsitory' + repoUrl })
+        body: JSON.stringify({ "message": 'Uploaded repsitory ' + repoUrl })
     };
     callback(null, response);
 };
