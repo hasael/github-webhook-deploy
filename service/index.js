@@ -11,13 +11,18 @@ exports.deploy = async (repoUrl, repoName) => {
     const clone = spawnSync('git', ['clone', repoUrl], {
         cwd: '/tmp'
     });
+    
     console.log(clone.output.toString());
 
-    await archive.zipAndUpload(tmpDir, '/tmp/ToDeploy.zip');
+    await archive.zipAndUpload(tmpDir, '/tmp/ToDeploy.zip', 'ToDeploy.zip');
 
-    console.log('searching for tmp');
-    fs.readdirSync(tmpDir).forEach(file => {
+    logDirecotoryFiles(tmpDir);
+};
+
+function logDirecotoryFiles(dir) {
+
+    console.log('searching for ' + dir);
+    fs.readdirSync(dir).forEach(file => {
         console.log(file);
     });
-
-};
+}
