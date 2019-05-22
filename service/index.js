@@ -7,7 +7,7 @@ exports.deploy = async (repoUrl, repoName) => {
 
     var tmpDir = '/tmp/' + repoName;
     if (fs.existsSync(tmpDir)) {
-        rmDir(tmpDir);
+        rmdir(tmpDir);
     }
   
     await require('lambda-git')()
@@ -21,7 +21,7 @@ exports.deploy = async (repoUrl, repoName) => {
 
     logDirecotoryFiles(tmpDir);
 };
-function rmDir(dir) {
+function rmdir(dir) {
     var list = fs.readdirSync(dir);
     for(var i = 0; i < list.length; i++) {
         var filename = path.join(dir, list[i]);
